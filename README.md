@@ -2,11 +2,28 @@
 
 This project connects an **Arduino button** to a **Node.js server** so you can trigger desktop actions (like opening Brave in incognito mode) when you press the button.
 
+---
+
 ## ⚡ Tech Stack
 
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+---
+
+### ⚠️ Disclaimer
+
+This project currently only runs on `Linux systems`.
+
+ * The Arduino serial device is accessed through `/dev/ttyACM0`, which is Linux-specific.
+ * The `exec` command uses `brave-browser`, which is the Linux package name.
+ * If you are on **Windows** or **macOS**, you’ll need to adapt:
+
+   * Change the serial device path (e.g., `COM3` on Windows or `/dev/cu.usbmodem*` on macOS).
+   * Replace the browser launch command with the equivalent on your OS.
+
+---
 
 ## 🚀 Features
 - Read button press input from Arduino via **serial (USB)**.  
@@ -36,3 +53,4 @@ Here’s the schematic for the button wiring:
 
 <img src="./schematic.png" width="350"></img>
 
+`@SoufianeEch`
