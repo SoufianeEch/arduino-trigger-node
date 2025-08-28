@@ -18,7 +18,7 @@ stream.on("data", (chunk) => {
     if (line) {
       console.log(line);
       if (line == "1") {
-        openWebsite() // your can choose browser, window state & website
+        openWebsite(browser="brave-browser", state="private", website="https://github.com/SoufianeEch") // your can choose browser, window state & website
       }
     }
   });
@@ -27,12 +27,18 @@ stream.on("data", (chunk) => {
 function openWebsite(
   browser = "brave-browser",
   state = "private",
-  website = "https://youtube.com")
-  {
-  if (state.includes("public")) state = "--new-window";
-  if (state.includes("private")) state = "--incognito";
+  website = "https://youtube.com"
+) {
+  let mode = "";
 
-  exec(`${browser} ${state} ${website}`, (err, stdout, stderr) => {
+  if (state.includes("public")) mode = "--new-window";
+  if (state.includes("private")) mode = "--incognito";
+
+  exec(`${browser} ${mode} ${website}`, (err, stdout, stderr) => {
+    if (err) {
+      console.error("Error:", err);
+      return;
+    }
     console.log(stdout);
   });
 }
